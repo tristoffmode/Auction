@@ -1,6 +1,7 @@
 📄 README – Projet R3.06 : Serveur d’Enchères (Java / Sockets)
 👥 Étudiant(s)
 NGUYEN Quoc Tri
+Groupe: F2
 
 
 📌 Description du projet
