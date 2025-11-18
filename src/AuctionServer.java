@@ -6,22 +6,20 @@ import java.util.concurrent.*;
 public class AuctionServer 
 {
 
-	private static int currentBid = 0;               // Giá hiện tại
-	private static String currentWinner = "Personne"; // Người đang dẫn
+	private static int currentBid = 0;           
+	private static String currentWinner = "Personne"; 
 	private static long lastBidTime = System.currentTimeMillis();
 	private static final List<ClientHandler> clients = new ArrayList<>();
 
-	private static final Object lock = new Object();  // Đồng bộ hóa
+	private static final Object lock = new Object(); 
 
 	public static void main(String[] args) throws Exception 
 	{
 		ServerSocket serverSocket = new ServerSocket(5000);
 		System.out.println("[SERVER] Server started on port 5000...");
 
-		// Thread countdown riêng
 		new Thread(() -> manageCountdown()).start();
 
-		// Chấp nhận client liên tục
 		while (true) 
 			{
 			Socket socket = serverSocket.accept();
@@ -34,7 +32,6 @@ public class AuctionServer
 		}
 	}
 
-	// Quản lý “une fois / deux fois / adjudgé”
 	private static void manageCountdown() 
 	{
 		while (true) {
@@ -64,7 +61,6 @@ public class AuctionServer
 		}
 	}
 
-	// Gửi thông báo cho tất cả client
 	public static void broadcast(String msg) 
 	{
 		synchronized (clients) {
@@ -75,7 +71,6 @@ public class AuctionServer
 		}
 	}
 
-	// Khi có đấu giá mới
 	public static void newBid(int amount, String bidder) 
 	{
 		synchronized (lock) 
@@ -91,7 +86,6 @@ public class AuctionServer
 		}
 	}
 
-	// Xử lý từng client
 	static class ClientHandler extends Thread 
 	{
 		private Socket socket;

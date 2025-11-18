@@ -3,7 +3,6 @@
 NGUYEN Quoc Tri
 Groupe: F2
 
-
 📌 Description du projet
 - Ce projet consiste à développer une application client-serveur en Java, utilisant les sockets TCP, permettant de gérer une enchère en temps réel.
 

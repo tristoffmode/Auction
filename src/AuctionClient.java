@@ -12,7 +12,6 @@ public class AuctionClient
 		PrintWriter serverOut    = new PrintWriter(socket.getOutputStream(), true);
 		BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in));
 
-		// Thread nhận tin từ server
 		new Thread(() -> 
 		{
 			String msg;
@@ -24,7 +23,6 @@ public class AuctionClient
 			} catch (Exception e) {}
 		}).start();
 
-		// Thread gửi dữ liệu mình nhập
 		String line;
 		while ((line = userInput.readLine()) != null) 
 		{
